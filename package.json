@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joykliu/reactProject1/issues"
   },
-  "homepage": "https://github.com/joykliu/reactProject1#readme"
+  "homepage": "https://github.com/joykliu/reactProject1#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
