@@ -16,18 +16,29 @@ var GreeterForm = React.createClass({
     // NOTE: a presentational component: takes propes and renders them on to the screen
     onButtonClick: function(e){
         e.preventDefault();
+
+        var updates = {};
         var name = this.refs.name.value;
+        var message = this.refs.message.value;
+
         if(name.length > 0) {
             this.refs.name.value = '';
-            this.props.onNewName(name);
+            updates.name = name;
             //name value passed into onNewName, and gets passed to handleNewName by onNewName
         }
+
+        if(message.length > 0) {
+            this.refs.message.value = '';
+            updates.message = message;
+        }
+        this.props.onNewName(updates);
     },
 
     render: function(){
         return(
             <form onSubmit={this.onButtonClick}>
                 <input type="text" ref="name"/>
+                <textarea ref="message"></textarea>
                 <button>click me</button>
             </form>
         )
@@ -49,14 +60,12 @@ var Greeter = React.createClass({
             message: this.props.message
         };
     },
-    handleNewName: function(name){//function to be passed on in greeterForm
-        this.setState({
-            name: name
-        });
+    handleNewName: function(updates){//function to be passed on in greeterForm
+        this.setState(updates); // updates has been defined already so no need to pass on new object here
     },// every funciton inside the component is seperated by a comma
     render: function() { // defining the render method property as anonymous function that doesn't take in any arguments
         var name = this.state.name;//accessting name defined n getInitalState
-        var message = this.props.message; // defines an variable that contains the value of the component's name prop value
+        var message = this.state.message; // defines an variable that contains the value of the component's name prop value
         return ( // when we return jsx, we can only return ONE ROOT element.
             <div>
                 <GreeterMessage name={name} message={message}/>
