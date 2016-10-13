@@ -1,30 +1,39 @@
  var React = require('react');
  var WeatherForm = require('WeatherForm');
  var WeatherMessage = require('WeatherMessage');
+ var openWeatherMap = require('openWeatherMap');
 
  var Weather = React.createClass({
-    getDefaultProps: function() {
-        return {
-            city: 'city'
-        }
-    },
     getInitialState: function() {
         return {
-            city: this.props.city
+            city: 'toronto',
+            temp: 15
         }
     },
-    onNewCity: function(updates) {
-        this.setState(updates)
+    handleSearch: function(city) {
+
+        /* give `this` to a variable
+        ** othewise in .setState this would refer to handleSeach
+        */
+        var that = this;
+        // case of success API call, temp comes back
+        openWeatherMap.getTemp(city).then(function(temp){
+            that.setState({
+                city: city,
+                temp: temp
+            });
+        }, function(errorMessage) {
+            alert(errorMessage)
+        })
     },
     render: function() {
-        var city = this.state.city
+        var {temp, city} = this.state;
 
         return (
             <div>
                 <h1>Get Weather</h1>
-                <WeatherForm onNewCity={this.onNewCity}/>
-                <WeatherMessage city={city}/>
-                {/* <WeatherMessage onNewCity={this.onNewCity}/> */}
+                <WeatherForm onSearch={this.handleSearch}/>
+                <WeatherMessage city={city} temp={temp}/>
             </div>
         )
     }
