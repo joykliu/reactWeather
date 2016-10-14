@@ -6,31 +6,31 @@ var WeatherForm = React.createClass({
     onFormSubmit: function(e) {
         e.preventDefault();
 
-        // define variable city to the user input value
+        // define variable location to the user input value
         var city = this.refs.city.value;
 
-        // if the user seraches for a city
+        // if the user seraches for a location
         if (city.length > 0) {
             this.refs.city.value = '';
-            /* passing in the city the user searches for
+            /* passing in the location the user searches for
             ** set props value to user input
             ** by calling the parent search function
             ** defined in weather.jsx
             */
             this.props.onSearch(city);
         }
-        //this.props.onNewCity(city)
+        //this.props.onNewlocation(location)
     },
     render: function() {
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>
-                    <input type="text" ref="city" placeholder="Enter city name"/>
+                    <input type="text" ref="city"/>
                     <button>Get Weather</button>
                 </form>
             </div>
-        )
+        );
     }
-})
+});
 
 module.exports = WeatherForm;

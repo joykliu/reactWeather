@@ -3,7 +3,7 @@ var axios = require('axios');
 
 // when using const
 // naming convention uses uppercases and underscores
-const OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/weather?&appid=568a0ed9c594a90d8d9e8856ffc2a2c1&units=imperial';
+const OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/weather?appid=c4e735ea8bd7e7b6dc8368c752517b2d&units=imperial';
 
 module.exports = {
     getTemp: function(city){
@@ -14,14 +14,14 @@ module.exports = {
         */
         var encodedCity = encodeURIComponent(city);
         var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedCity}`;
-        /* takes the city param
+        /* takes the location param
         ** passes it to WeatherForm
         ** return value into Weather.jsx after going through promise
         */
 
         // axios.get takes one param, url
-        axios.get(requestUrl).then(function(res) {
-
+        return axios.get(requestUrl).then(function(res) {
+            debugger;
             /* see if the two statements exist
             ** if both exist meaning error
             */
@@ -32,11 +32,11 @@ module.exports = {
                 // if both exist
                 throw new Error(res.data.message)
             } else {
-                return res.data.main.temp
+                return res.data.main.temp;
             }
         }, function(res){
-            // NOTE: when inputs invalid city name THIS api doesn't throw err by default
+            // NOTE: when inputs invalid location name THIS api doesn't throw err by default
             throw new Error(res.data.message);
         });
     }
-};
+}
