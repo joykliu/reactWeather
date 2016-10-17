@@ -4,16 +4,23 @@ const express = require('express');
 // calling thie express library
 const app = express();
 
-// use process.env to access environment variables
-// when in local, use 3000
+/*
+** use process.env to access environment variables using the
+** process.env object
+** when in local, use 3000
+*/
 const port = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
     // check if traffic is through http(s)
     if (req.headers['x-forwarded-prop'] = 'http'/* or https if https environment */) {
-        // traffic is through http(s)
         next();
     } else {
+        /*
+        ** redirect traffic to the http(s) versigon of the url by
+        ** concatinating the http protocal,
+        ** request's host name and requests url
+        */
         res.redirect('http://' + req.hostname + req.url);
     }
 })
@@ -21,8 +28,8 @@ app.use(function(req, res, next) {
 // express static sepcify a foldername
 app.use(express.static('public'));
 
-//.listen takes two arguments, one is the port, the other one is a funciton
-app.listen(3000, function(){
+//.listen takes two arguments, one is the port, the other one is a function
+app.listen(port, function(){
     console.log('express server is up on port' + port + '!')
 });
 
