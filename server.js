@@ -13,15 +13,15 @@ const port = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
     // check if traffic is through http(s)
-    if (req.headers['x-forwarded-prop'] = 'http'/* or https if https environment */) {
+    if (req.headers['x-forwarded-prop'] = 'https'/* or https if https environment */) {
         next();
     } else {
         /*
         ** redirect traffic to the http(s) versigon of the url by
-        ** concatinating the http protocal,
+        ** concatinating the http(s) protocal,
         ** request's host name and requests url
         */
-        res.redirect('http://' + req.hostname + req.url);
+        res.redirect('https://' + req.hostname + req.url);
     }
 })
 
