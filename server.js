@@ -9,11 +9,11 @@ const app = express();
 ** process.env object
 ** when in local, use 3000
 */
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
     // check if traffic is through http(s)
-    if (req.headers['x-forwarded-prop'] = 'https'/* or https if https environment */) {
+    if (req.headers['x-forwarded-proto'] = 'http'/* or https if https environment */) {
         next();
     } else {
         /*
@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
         ** concatinating the http(s) protocal,
         ** request's host name and requests url
         */
-        res.redirect('https://' + req.hostname + req.url);
+        res.redirect('http://' + req.hostname + req.url);
     }
 })
 
@@ -29,8 +29,8 @@ app.use(function(req, res, next) {
 app.use(express.static('public'));
 
 //.listen takes two arguments, one is the port, the other one is a function
-app.listen(port, function(){
-    console.log('express server is up on port' + port + '!')
+app.listen(PORT, function(){
+    console.log('express server is up on port' + PORT + '!')
 });
 
 // =====> WEB SERVER IS ESSENTIAL TO RUN REACT
