@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
     // check if traffic is through http(s)
-    if (req.headers['x-forwarded-proto'] = 'http'/* or https if https environment */) {
+    if (req.headers['x-forwarded-proto'] === 'http'/* or https if https environment */) {
         next();
     } else {
         /*
