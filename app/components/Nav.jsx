@@ -17,7 +17,6 @@ const {Link, IndexLink} = require('react-router');
 ** to use onSearch function in <form> */
 const Nav = React.createClass({
     // Adding support for onSearch method
-
     onSearch: function(e) {
         e.preventDefault(e);
         alert('not yet wired up')
@@ -27,7 +26,7 @@ const Nav = React.createClass({
             <div className="top-bar">
                 <div className="top-bar-left">
                     <ul className="menu">
-                        <li classNmae="menu-text">Hermione Granger</li>
+                        <li className="menu-text">Hermione Granger</li>
                         <li>
                             <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get Weather</IndexLink>
                         </li>
