@@ -60,7 +60,7 @@
         }
         return (
             <div>
-                <h1>Get Weather</h1>
+                <h1 className="text-center">Get Weather</h1>
                 <WeatherForm onSearch={this.handleSearch}/>
                 {/*
                     calling render function here to spit out
