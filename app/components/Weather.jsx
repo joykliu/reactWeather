@@ -53,7 +53,7 @@
         function renderMessage() {
             if(isLoading) {
                 // when is loading gives out a loading message
-                return <h3>Fetching weather.....</h3>;
+                return <h3 className="text-center">Fetching weather.....</h3>;
             }else if(temp && city) {
                 return <WeatherMessage temp={temp} city={city}/>;
             }

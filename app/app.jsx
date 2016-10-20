@@ -44,7 +44,7 @@ ReactDOM.render(
             <Route path="examples" component={Examples}/>
             <IndexRoute component={Weather}/>
             {/*When using `IndexRoute`
-                use `IndexLink` instead of `Link`*/}
+            ** use `IndexLink` instead of `Link`*/}
         </Route>
     </Router>, // renders the component to run, use the tag name created up there. passing a name attribute to serve as a prop
     document.getElementById('app')
