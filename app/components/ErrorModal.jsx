@@ -13,10 +13,10 @@ const ErrorModal = React.createClass({
     },
     render: function(){
         return(
-            <div id="error-modal" className="reveal tiny text-center" data-reveal>
+            <div id="error-modal" className="reveal tiny text-center" data-reveal="">
                 <h4>Some title</h4>
                 <p>Our error message</p>
-                <button className="button hollow" data-close>
+                <button className="button hollow" data-close="">
                     FINE!
                 </button>
             </div>
