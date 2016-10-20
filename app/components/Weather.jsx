@@ -2,6 +2,7 @@
  const WeatherForm = require('WeatherForm');
  const WeatherMessage = require('WeatherMessage');
  const openWeatherMap = require('openWeatherMap');
+ const ErrorModal = require('ErrorModal');
 
  const Weather = React.createClass({
     getInitialState: function() {
@@ -25,7 +26,11 @@
 
         // debugger;
         // when search performs `isLoading` equals to true
-        this.setState({isLoading: true});
+        this.setState({
+            isLoading: true,
+            // clearing out existing error messages
+            errorMessage: undefined
+        });
         // case of success API call, temp comes back
         openWeatherMap.getTemp(city).then(function(temp){
             that.setState({
@@ -34,15 +39,18 @@
                 // sucess api call set `isLoading` back to false
                 isLoading: false
             });
-        }, function(errorMessage) {
+        }, function(e) {
+            // calls fails and triggers erro, set error message
             that.setState({
-                isLoading: false
+                isLoading: false,
+                /* .message is a JS property that
+                ** lives in a default JS object, e*/
+                errorMessage: e.message
             });
-            alert(errorMessage)
         })
     },
     render: function() {
-        var {isLoading, temp, city} = this.state;
+        var {isLoading, temp, city, errorMessage} = this.state;
 
         /*
         ** to conditionally load either the weather message
@@ -58,6 +66,14 @@
                 return <WeatherMessage temp={temp} city={city}/>;
             }
         }
+        function renderError() {
+            if(typeof errorMessage === 'string') {
+                return(
+                    // the content of the error message
+                    <ErrorModal/>
+                )
+            }
+        }
         return (
             <div>
                 <h1 className="text-center">Get Weather</h1>
@@ -67,6 +83,7 @@
                     weather message conditionally
                 */}
                 {renderMessage()}
+                {renderError()}
             </div>
         )
     }
