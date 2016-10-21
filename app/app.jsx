@@ -31,6 +31,11 @@ require('style!css!foundation-sites/dist/foundation.min.css')
 $(document).foundation();
 
 //*************************************************
+//     L O A D I N G  C U S T O M  C S S
+//*************************************************
+require('style!css!applicationStyles')
+
+//*************************************************
 //     A P P  R E N D E R I N G
 //*************************************************
 ReactDOM.render(

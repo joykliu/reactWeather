@@ -21,17 +21,16 @@ module.exports = {
 
         // axios.get takes one param, url
         return axios.get(requestUrl).then(function(res) {
-            debugger;
             /* see if the two statements exist
             ** if both exist meaning error
             */
-
             /* `cod`, `messgae` and `main.temp` are properties
             ** of result object.*/
             if(res.data.cod && res.data.message) {
                 // if both exist
                 throw new Error(res.data.message)
             } else {
+                // this returned message gets passed as `temp` in weather.jsx
                 return res.data.main.temp;
             }
         }, function(res){

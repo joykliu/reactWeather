@@ -4,7 +4,7 @@ const {Link} = require('react-router');
 ** and doesn't maintain any state */
 const About = props => (
     <div className="row">
-        <h1 className="text-center">About</h1>
+        <h1 className="text-center page-title">About</h1>
         <div className="columns large-12 medium-6 small-centered">
             <div className="columns small-12 large-12 medium-12">
                 <p>This simple weather app is created with React.js and styled with Foundation CSS. </p>

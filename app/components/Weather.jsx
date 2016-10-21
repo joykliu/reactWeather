@@ -7,8 +7,7 @@
  const Weather = React.createClass({
     getInitialState: function() {
         return {
-
-            /* setting an 'isLoading' detector
+            /* NOTE: setting an 'isLoading' detector
             ** to detect if user performs a search
             ** initial state is set to false
             ** when search perfroms `isLoading` becomes true
@@ -18,7 +17,6 @@
         }
     },
     handleSearch: function(city) {
-
         /* give `this` to a variable
         ** othewise in .setState this would refer to handleSeach
         */
@@ -26,7 +24,8 @@
 
         /* maintaining a state for if it's loading
         ** and for error message in order to conditionally
-        ** load loading texts and error message later */
+        ** load loading texts and error message later
+        */
         this.setState({
             isLoading: true,
             // clearing out existing error messages
@@ -84,7 +83,7 @@
         }
         return (
             <div>
-                <h1 className="text-center">Get Weather</h1>
+                <h1 className="text-center page-title">Get Weather!</h1>
                 <WeatherForm onSearch={this.handleSearch}/>
                 {/*
                     calling render function here to spit out
