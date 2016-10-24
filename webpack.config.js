@@ -39,7 +39,7 @@ module.exports = {
             WeatherMessage: 'app/components/WeatherMessage.jsx',
             openWeatherMap: 'app/api/openWeatherMap.jsx',
             ErrorModal: 'app/components/ErrorModal.jsx',
-            applicationStyles: 'app/styles/app.css'
+            applicationStyles: 'app/styles/app.scss'
         },//when updating webpack aliases restart webpack
         extensions: ['', '.js', '.jsx']
     },

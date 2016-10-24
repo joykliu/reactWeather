@@ -33,7 +33,7 @@ $(document).foundation();
 //*************************************************
 //     L O A D I N G  C U S T O M  C S S
 //*************************************************
-require('style!css!applicationStyles')
+require('style!css!sass!applicationStyles')
 
 //*************************************************
 //     A P P  R E N D E R I N G
