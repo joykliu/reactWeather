@@ -36,7 +36,7 @@ const ErrorModal = React.createClass({
         var {title, message} = this.props;
         // data-reveal and data-close are jquery modal plugins by foundation
         var modalMarkup = (
-            <div id="erro-modal" className="reveal tiny text-center" data-reveal="">
+            <div id="error-modal" className="reveal tiny text-center" data-reveal="">
                 <h4>{title}</h4>
                 <p>{message}</p>
                 <button calssName="button hollow" data-close="">
@@ -65,7 +65,6 @@ const ErrorModal = React.createClass({
         modal.open();
     },
     render: function(){
-
         return (
             // start with no dom so foundation has nothing to manipulate
             <div>
