@@ -29,7 +29,10 @@
         this.setState({
             isLoading: true,
             // clearing out existing error messages
-            errorMessage: undefined
+            errorMessage: undefined,
+            // clear out last search result everytime the handleSearch funciton is called
+            city: undefined,
+            temp: undefined
         });
         // case of success API call, temp comes back
         openWeatherMap.getTemp(city).then(function(temp){
@@ -52,6 +55,31 @@
                 errorMessage: e.message
             });
         })
+    },
+    // run search when the component is rendered.
+    componentDidMount: function(){
+        // call handlesearch(), pass in location to automatically start search
+        // looks for the locaiton object passed in the URL
+        var location = this.props.location.query.location;
+        if(location && location.length > 0) {
+            // if location query exists, call handleSearch to start search
+            this.handleSearch(location);
+            // reset query string from url after search performs, reset to root
+            window.location.hash='#/';
+        }
+    },
+    /* NOTE: componentWillReceiveProps is a built-in React function that
+    ** can be called when changes happen to props or state,or when a component
+    ** is being re-rendered. `render()` is also an updating method. It takes
+    ** one argument, wichi is the updated/new props.
+    */
+    componentWillReceiveProps: function(newProps){
+        var newLocation = newProps.location.query.location
+        if(newLocation && newLocation.length > 0) {
+            this.handleSearch(newLocation);
+
+            window.location.hash='#/';
+        }
     },
     render: function() {
         // pulling out the current state of props

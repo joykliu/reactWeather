@@ -21,6 +21,7 @@ module.exports = {
 
         // axios.get takes one param, url
         return axios.get(requestUrl).then(function(res) {
+            console.log(res)
             /* see if the two statements exist
             ** if both exist meaning error
             */

@@ -19,7 +19,16 @@ const Nav = React.createClass({
     // Adding support for onSearch method
     onSearch: function(e) {
         e.preventDefault(e);
-        alert('not yet wired up')
+        // pull value out of search input field
+        var location = this.refs.search.value;
+        // encoding url
+        var encodedLocation = encodeURIComponent(location);
+        if (location.length > 0) {
+            // clearing the input field's value
+            this.refs.search.value = '';
+            // resetting url to pass in encoded location value
+            window.location.hash = `#/?location=${encodedLocation}`;
+        }
     },
     render: function() {
         return (
@@ -42,7 +51,7 @@ const Nav = React.createClass({
                     <form onSubmit={this.onSearch}>
                         <ul className="menu">
                             <li>
-                                <input type="search" placeholder="search Weather by city"/>
+                                <input type="search" ref="search" placeholder="search Weather by city"/>
                             </li>
                             <li>
                                 <button type="submit" className="button" value="Get Weather">Get Weather</button>
