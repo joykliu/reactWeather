@@ -9,7 +9,7 @@ const app = express();
 ** process.env object
 ** when in local, use 3000
 */
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(function(req, res, next) {
     // check if traffic is through http(s)
